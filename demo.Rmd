@@ -7,7 +7,7 @@ output: html_notebook
 
 We'll start by loading the necessary packages.
 
-```{r}
+```{r, message = FALSE}
 library(sparklyr)
 library(dplyr)
 library(mleap)
@@ -44,8 +44,7 @@ data_prep_step <- ml_pipeline(sc) %>%
     c("origin", "dest"), "airports",
     num_features = 64) %>%
   ft_vector_assembler(
-    c("dep_delay", "airports"),
-    "features"
+    c("dep_delay", "airports"), "features"
   ) 
 
 pipeline <- data_prep_step %>%
